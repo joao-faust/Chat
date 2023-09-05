@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<style>
+  body {
+    background-color: #f8f9fa;
+  }
+</style>
+{% endblock %}
+
+{% block title %} Signup {% endblock %}
+
+{% block content %}
+<form method="POST" autocomplete="off" class="auth-form">
+  <h1 class="my-3">Criar conta</h1>
+  <div class="form-group">
+    <label for="nickname">Apelido</label>
+    <input type="text" name="nickname" id="nickname" class="form-control"
+      required minlength="1" maxlength="20">
+  </div>
+  <div class="form-group">
+    <label for="password-1">Senha</label>
+    <input type="password" name="password-1" id="password-1" class="form-control"
+      required minlength="8" onchange="validatePassword();">
+  </div>
+  <div class="form-group">
+    <label for="password-2">Confirmar Senha</label>
+    <input type="password" name="password-2" id="password-2" class="form-control"
+      required oninput="validatePassword();">
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-secondary btn-block" id="signup-btn">
+      Confirmar
+    </button>
+  </div>
+  <div class="form-group">
+    <a href="/">Já tenho uma conta</a>
+  </div>
+</form>
+{% endblock %}

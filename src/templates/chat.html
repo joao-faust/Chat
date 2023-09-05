@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %} Chat {% endblock %}
+
+{% block content %}
+  <input type="hidden" name="nickname" id="nickname"
+    value="{{ current_user.nickname }}">
+  <div class="chat-container">
+    <ul id="chat" class="list-group border p-4">
+      {% for message in messages %}
+        <li>
+          <span class="text-muted">
+            {% if message.nickname == current_user.nickname %}
+              você
+            {% else %}
+              {{ message.nickname }}
+            {% endif %}
+          </span>
+          <p class="my-2">
+            {{ message.content }}
+          </p>
+          <span class="text-muted">
+            {{ message.created_at.strftime('%d/%m/%Y %H:%M') }}
+          </span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <br>
+  <form method="POST" class="d-flex" id="chat-form" autocomplete="off">
+    <input type="text" name="msg" id="msg" placeholder="Mensagem"
+      class="form-control">
+    <button type="submit" class="btn btn-primary ml-2">
+      Enviar
+    </button>
+  </form>
+  <br>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
+  integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
+  crossorigin="anonymous"></script>
+<script src="/static/chat.js"></script>
+{% endblock %}

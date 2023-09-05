@@ -1,0 +1,29 @@
+.chat-container {
+  height: 75vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#chat li {
+  list-style-type: none;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, .125);
+  padding: 20px;
+}
+
+#chat li:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.auth-form {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  max-width: 400px;
+  margin: auto;
+  padding: 15px 20px;
+}
+
+.auth-form h1 {
+  font-size: 35px;
+}
